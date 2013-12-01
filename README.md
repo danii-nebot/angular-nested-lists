@@ -7,6 +7,6 @@ Written for [lostiemposcambian.com](http://www.lostiemposcambian.com/blog/)
 
 TODOs
 ===============
- - Add nice header
- - fix CSS
+ - ~~Add nice header~~
+ - ~~fix CSS~~
  - add CSS animations & transitions :)
