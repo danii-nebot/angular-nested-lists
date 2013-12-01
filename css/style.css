@@ -1,7 +1,49 @@
+body {
+  font-size: 12px;
+}
 span.done {
   text-decoration: line-through;
 }
 
 span.expand-indicator {
   float: right;
+  margin-right: 15px;
+  font-size: 12px;
+}
+
+div.list-items ul {
+  margin-top: 10px;
+}
+div.list-items li {
+  margin-top: 5px;
+  height: 22px;
+  cursor: default;
+}
+
+div.list-items li:hover {
+  background-color: #EEE;
+}
+
+div.list-items .btn {
+  float: right;
+  margin-right: 10px;
+}
+
+/* bootstrap  overrides */
+.page-header {
+  margin: 10px 0 10px;
+  padding-bottom: 0;
+  text-align: center;
+}
+.form-control {
+  font-size: 12px;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
