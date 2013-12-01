@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <div class="form-group" ng-class="{'has-error': errorNewCategory}">
+      <label>Add new category:</label>
+      <input class="form-control" type="text" placeholder="type category name" ng-model="newCategoryName" ng-enter="addCategory()" />
+      <button ng-click="addCategory()" class="btn btn-primary">add</button>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': errorNewTask}">
+      <label>Add new task to category:</label>
+      <input class="form-control" type="text" placeholder="type task name" ng-model="newTaskName" ng-enter="addTask()" />
+    </div>
+    <div class="form-group">
+      <select class="form-control" ng-model="selectedCategory" ng-options="c.name for c in data"></select>
+      <button ng-click="addTask()" class="btn btn-primary">add</button>
+    </div>
+
+    <!--  Repeat start, beggining of category group -->
+    <div ng-repeat-start="category in data">
+      <button class="btn btn-primary btn-block" ng-click="toggleCategory(category)">
+        {{ category.name }}
+        <span class="expand-indicator" ng-show="category.expanded">-</span>
+        <span class="expand-indicator" ng-show="!category.expanded">+</span>
+      </button>
+    </div>
+
+    <!--  Item group inside each category -->
+    <div class="list-items" ng-show="category.expanded">
+      <ul>
+      <li ng-repeat="item in category.items">
+        <span ng-class="{done:item.completed}">{{ item.name }}</span>
+        <button ng-show="!item.completed" ng-click="completeTask(item)" class="btn btn-success btn-sm">done</button>
+        <button ng-show="item.completed" ng-click="uncompleteTask(item)" class="btn btn-warning btn-sm">reset</button>
+        <button ng-click="deleteTask(category, item)" class="btn btn-danger btn-sm">del</button>
+      </li>
+      <small ng-show="category.items.length==0">NO ITEMS!</small>
+      </ul>
+    </div>
+
+    <!--  Repeat end, closing category group -->
+    <div ng-repeat-end ng-show="category.expanded">
+      <button class="btn btn-primary btn-block" disabled="disabled">/ {{ category.name }}</button>
+    </div>
+
+  </div>
+  </div>
+</div>

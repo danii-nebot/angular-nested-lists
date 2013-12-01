@@ -1,0 +1,7 @@
+span.done {
+  text-decoration: line-through;
+}
+
+span.expand-indicator {
+  float: right;
+}
