@@ -29,6 +29,84 @@ div.list-items .btn {
   margin-right: 10px;
 }
 
+.no-items {
+  color: #999;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+
+/* Animations */
+.animate-show-item.ng-hide-add,
+.animate-show-item.ng-hide-remove {
+  -webkit-transition:0.33s ease all;
+  transition:0.5s linear all;
+
+  /* remember to add this */
+  display:block!important;
+  position: relative;
+  top: 0;
+  opacity:1;
+}
+.animate-show-item.ng-hide {
+  top: -15px;
+  opacity:0;
+}
+
+.animate-repeat-category.ng-enter,
+.animate-repeat-category.ng-leave,
+.animate-repeat-category.ng-move,
+.animate-repeat-item.ng-enter,
+.animate-repeat-item.ng-leave,
+.animate-repeat-item.ng-move {
+  -webkit-transition: 0.33s ease all;
+  transition: 0.33s eases all;
+  position:relative;
+}
+
+.animate-repeat-item.ng-enter {
+  left:-10px;
+  opacity:0;
+}
+.animate-repeat-item.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.animate-repeat-item.ng-leave {
+  left:0;
+  opacity:1;
+}
+.animate-repeat-item.ng-leave.ng-leave-active {
+  left:-10px;
+  opacity:0;
+}
+
+.animate-repeat-category.ng-enter {
+  top:-10px;
+  opacity:0;
+}
+.animate-repeat-category.ng-enter.ng-enter-active {
+  top:0;
+  opacity:1;
+}
+
+.animate-repeat-category.ng-leave {
+  top:0;
+  opacity:1;
+}
+.animate-repeat-category.ng-leave.ng-leave-active {
+  top:-10px;
+  opacity:0;
+}
+
+/*.animate-repeat-item.ng-move {
+  opacity:0.5;
+}
+.animate-repeat-item.ng-move.ng-move-active {
+  opacity:1;
+}*/
+
 /* bootstrap  overrides */
 .page-header {
   margin: 10px 0 10px;

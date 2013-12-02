@@ -1,5 +1,5 @@
 
-var app = angular.module("lostiemposcambian.list", ['ngRoute']);
+var app = angular.module("lostiemposcambian.list", ['ngRoute', 'ngAnimate']);
 
 /* The factory creates the various models for the application */
 app.factory('dataModel', function()

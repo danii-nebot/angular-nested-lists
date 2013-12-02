@@ -30,7 +30,7 @@
     <hr>
 
     <!--  Repeat start, beggining of category group -->
-    <div ng-repeat-start="category in data">
+    <div ng-repeat-start="category in data" class="animate-repeat-category">
       <button class="btn btn-primary btn-block btn-sm" ng-click="toggleCategory(category)">
         {{ category.name }}
         <span class="expand-indicator" ng-show="category.expanded">&mdash;</span>
@@ -39,21 +39,21 @@
     </div>
 
     <!--  Item group inside each category -->
-    <div class="list-items" ng-show="category.expanded">
+    <div class="list-items animate-show-item" ng-show="category.expanded">
       <ul>
-      <li ng-repeat="item in category.items">
+      <li ng-repeat="item in category.items" class="animate-repeat-item">
         <span ng-class="{done:item.completed}">{{ item.name }}</span>
         <button ng-show="!item.completed" ng-click="completeTask(item)" class="btn btn-success btn-xs">done</button>
         <button ng-show="item.completed" ng-click="uncompleteTask(item)" class="btn btn-warning btn-xs">reset</button>
         <button ng-click="deleteTask(category, item)" class="btn btn-danger btn-xs">del</button>
       </li>
-      <small ng-show="category.items.length==0">NO ITEMS!</small>
       </ul>
+      <div class="no-items"><small ng-show="category.expanded && category.items.length==0">NO ITEMS!</small></div>
     </div>
 
     <!--  Repeat end, closing category group -->
     <div ng-repeat-end>
-      <button ng-show="category.expanded" class="btn btn-primary btn-block btn-sm" disabled="disabled">/ {{ category.name }}</button>
+      <button ng-show="category.expanded" class="btn btn-primary btn-block btn-sm animate-show-item" disabled="disabled">/ {{ category.name }}</button>
       <hr>
     </div>
 
