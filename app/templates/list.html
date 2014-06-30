@@ -6,10 +6,39 @@
       <h1>Simple Nested ToDos <small>AngularJS</small></h1>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': errorNewCategory}">
+    <!--  Repeat start, beggining of category group -->
+    <div ng-repeat-start="category in data" class="animate-repeat-category">
+      <button class="btn btn-primary btn-block btn-sm" ng-click="toggleCategory(category)">
+        {{ category.name }}
+        <span class="expand-indicator" ng-show="category.expanded">&mdash;</span>
+        <span class="expand-indicator" ng-show="!category.expanded">+</span>
+      </button>
+    </div>
+
+    <!--  Item group inside each category -->
+    <div class="list-items animate-show-item" ng-show="category.expanded">
+      <ul>
+      <li ng-repeat="item in category.items" class="animate-repeat-item">
+        <span ng-class="{done:item.completed}" editable class-off="done" ng-model="item.name"></span>
+        <button ng-show="!item.completed" ng-click="completeTask(item)" class="btn btn-success btn-xs">done</button>
+        <button ng-show="item.completed" ng-click="uncompleteTask(item)" class="btn btn-warning btn-xs">reset</button>
+        <button ng-click="deleteTask(category, item)" class="btn btn-danger btn-xs">del</button>
+      </li>
+      </ul>
+      <div class="no-items"><small ng-show="category.expanded && category.items.length==0">NO ITEMS!</small></div>
+    </div>
+
+    <!--  Repeat end, closing category group -->
+    <div ng-repeat-end>
+      <button ng-show="category.expanded" class="btn btn-primary btn-block btn-sm animate-show-item" disabled="disabled">/ {{ category.name }}</button>
+      <hr>
+    </div>
+        <div class="form-group" ng-class="{'has-error': errorNewCategory}">
       <label for="categoryName">Add new category:</label>
       <input id="categoryName" class="form-control" type="text" placeholder="type category name" ng-model="newCategoryName" ng-enter="addCategory()" />
     </div>
+
+    <hr>
 
     <div class="form-group">
       <button ng-click="addCategory()" class="btn btn-primary btn-xs">add</button>
@@ -26,35 +55,6 @@
 
     <div class="form-group">
       <button ng-click="addTask()" class="btn btn-primary btn-xs">add</button>
-    </div>
-    <hr>
-
-    <!--  Repeat start, beggining of category group -->
-    <div ng-repeat-start="category in data" class="animate-repeat-category">
-      <button class="btn btn-primary btn-block btn-sm" ng-click="toggleCategory(category)">
-        {{ category.name }}
-        <span class="expand-indicator" ng-show="category.expanded">&mdash;</span>
-        <span class="expand-indicator" ng-show="!category.expanded">+</span>
-      </button>
-    </div>
-
-    <!--  Item group inside each category -->
-    <div class="list-items animate-show-item" ng-show="category.expanded">
-      <ul>
-      <li ng-repeat="item in category.items" class="animate-repeat-item">
-        <span ng-class="{done:item.completed}">{{ item.name }}</span>
-        <button ng-show="!item.completed" ng-click="completeTask(item)" class="btn btn-success btn-xs">done</button>
-        <button ng-show="item.completed" ng-click="uncompleteTask(item)" class="btn btn-warning btn-xs">reset</button>
-        <button ng-click="deleteTask(category, item)" class="btn btn-danger btn-xs">del</button>
-      </li>
-      </ul>
-      <div class="no-items"><small ng-show="category.expanded && category.items.length==0">NO ITEMS!</small></div>
-    </div>
-
-    <!--  Repeat end, closing category group -->
-    <div ng-repeat-end>
-      <button ng-show="category.expanded" class="btn btn-primary btn-block btn-sm animate-show-item" disabled="disabled">/ {{ category.name }}</button>
-      <hr>
     </div>
 
   </div>
