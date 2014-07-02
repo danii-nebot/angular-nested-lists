@@ -3,7 +3,7 @@ app.directive("ltcEditable", function($document) {
     scope: {
       text: "=ngModel"
     },
-    restrict: 'A',
+    restrict: 'A', // restrict directive to use as attribute
     link: function (scope, element, attrs) {
       // restrict this directive to span elements
       if(element[0].nodeName !== 'SPAN') {
@@ -20,6 +20,7 @@ app.directive("ltcEditable", function($document) {
 
       // shit happens
       element.on("dblclick", function() {
+        // class name classOff will prevent editable behaviour if element has that class
         if(!element.hasClass(attrs['classOff'])) {
            // swap span for input
           input.val(element.text());
