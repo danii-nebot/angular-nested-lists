@@ -1,4 +1,4 @@
-app.directive("lstEditable", function($document){
+app.directive("ltcEditable", function($document){
   return {
     scope: {
       text: "=ngModel"

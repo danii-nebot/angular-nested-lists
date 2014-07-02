@@ -19,7 +19,7 @@
     <div class="list-items animate-show-item" ng-show="category.expanded">
       <ul>
       <li ng-repeat="item in category.items" class="animate-repeat-item">
-        <span ng-class="{done:item.completed}" lst-editable class-off="done" ng-model="item.name"></span>
+        <span ng-class="{done:item.completed}" ltc-editable class-off="done" ng-model="item.name"></span>
         <button ng-show="!item.completed" ng-click="completeTask(item)" class="btn btn-success btn-xs">done</button>
         <button ng-show="item.completed" ng-click="uncompleteTask(item)" class="btn btn-warning btn-xs">reset</button>
         <button ng-click="deleteTask(category, item)" class="btn btn-danger btn-xs">del</button>
