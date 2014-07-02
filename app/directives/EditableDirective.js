@@ -3,22 +3,26 @@ app.directive("editable", function($document){
     scope: {
       text: "=ngModel"
     },
+    restrict: 'A',
     link: function (scope, element, attrs) {
+      // restrict this directive to span elements
+      if(element[0].nodeName !== 'SPAN') {
+         return;
+      }
 
+      // store refererences
       var $ = angular.element;
       var body = $($document[0].body);
+      var input = $('<input type="text"/>');
 
       // initial value
       element.text(scope.text);
-
-      var input = $('<input type="text"/>');
 
       // shit happens
       element.on("dblclick", function() {
         if(!element.hasClass(attrs['classOff'])) {
            // swap span for input
-          initial = element.text();
-          input.val(initial);
+          input.val(element.text());
           element.parent().append(input);
           input[0].focus();
           element.text('');
