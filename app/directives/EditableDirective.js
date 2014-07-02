@@ -1,4 +1,4 @@
-app.directive("ltcEditable", function($document){
+app.directive("ltcEditable", function($document) {
   return {
     scope: {
       text: "=ngModel"
@@ -53,9 +53,7 @@ app.directive("ltcEditable", function($document){
             // clean up
             input.remove();
           });
-
         }
-
       });
     }
   };
